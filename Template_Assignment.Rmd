@@ -12,6 +12,7 @@ install.packages("tidyverse")
 install.packages("yaml")
 install.packages("rmarkdown")
 install.packages("eurostat")
+install.packages("readr")
 ```
 
 ```{r packages}
@@ -51,6 +52,7 @@ Preferably from a URL, but if not, make sure to download the data and store it i
 library(readr)
 
 dataset <- read_csv("prc_hpi_a$defaultview_linear.csv")
+wages <- read_csv("tps00155_page_linear.csv")
 ```
 
 midwest is an example dataset included in the tidyverse package
