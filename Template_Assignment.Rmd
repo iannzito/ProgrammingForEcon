@@ -62,6 +62,9 @@ midwest is an example dataset included in the tidyverse package
 ```{r}
 head(dataset)
 str(dataset)
+
+head(wages)
+str(wages)
 ```
 
 The dataset was obtained from eurostat and was imported into R using the readr package. It contains 3,180 observations and 10 variables. The data consists out of the annual house price index (HPI) which values for multiple countries and years.
