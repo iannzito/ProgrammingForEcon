@@ -29,7 +29,7 @@ require(yaml)
 # Title Page
 
 Include your names
-Noele Kona
+Noel Kona
 Giorgia Tanzi 
 Iann Soffried 
 Julian Trinkl 
