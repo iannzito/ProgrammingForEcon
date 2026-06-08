@@ -11,19 +11,19 @@ output: pdf_document
 install.packages("tidyverse")
 install.packages("yaml")
 install.packages("rmarkdown")
-library(readxl)
-library(sf)
 install.packages("sf")
 install.packages("giscoR")
-library(giscoR)
-library(dplyr)
-library(ggplot2)
 ```
 
 ```{r packages}
 require(tidyverse)
 require(rmarkdown)
 require(yaml)
+library(readxl)
+library(sf)
+library(giscoR)
+library(dplyr)
+library(ggplot2)
 ```
 
 # Title Page
