@@ -29,12 +29,19 @@ require(yaml)
 # Title Page
 
 Include your names
+Noel Kona
+Giorgia Tanzi 
+Iann Soffried 
+Julian Trinkl 
+Mourris Nouwens 
+Dania Al Khulaifi 
 
 Include the tutorial group number
+Tutorial 5 Group 5 
 
 Include your tutorial lecturer's name
 Simon Loop
-blabla
+
 # Part 1 - Identify a Social Problem
 
 Use APA referencing throughout your document. [Here's a link to some explanation.](https://www.mendeley.com/guides/apa-citation-guide/)
