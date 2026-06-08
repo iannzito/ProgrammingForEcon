@@ -11,6 +11,11 @@ output: pdf_document
 install.packages("tidyverse")
 install.packages("yaml")
 install.packages("rmarkdown")
+library(readxl)
+library(sf)
+install.packages("sf")
+library(dplyr)
+library(ggplot2)
 ```
 
 ```{r packages}
@@ -27,6 +32,7 @@ Include the tutorial group number
 
 Include your tutorial lecturer's name
 Simon Loop
+blabla
 # Part 1 - Identify a Social Problem
 
 Use APA referencing throughout your document. [Here's a link to some explanation.](https://www.mendeley.com/guides/apa-citation-guide/)
@@ -92,6 +98,24 @@ Please use a separate 'R block' of code for each type of cleaning. So, e.g. one 
 Variable 1
 
 ```{r gen_var1}
+
+rent<-read_xlsx("rent_europe.xlsx")
+rent<-rent[2:35,]
+rent<-rent[,c(1,18)]
+
+europemap<-st_read("CNTR_RG_20M_2024_3035.shp")
+
+data<-left_join(europemap, rent, join_by("NAME_ENGL"=="TIME"))
+
+data<- data %>% 
+  filter(!is.na(Var))
+
+data<-data[1:33,]
+
+ggplot(data) +
+  geom_sf(aes(fill = Var)) +
+  scale_fill_viridis_c() +
+  theme_void()
 
 ```
 
