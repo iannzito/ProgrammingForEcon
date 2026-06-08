@@ -118,6 +118,8 @@ rent<-rent[-33,]
 
 rent<-rent[,-2:-6]
 
+rent<-rent[-34,]
+
 rent <- rent %>%
   mutate(
     `2015` = as.numeric(gsub("[^0-9.]", "", `2015`)),
@@ -135,7 +137,7 @@ europe <- europe[europe$CNTR_ID %in% c(
   "AT","PL","CZ","SK","HU","RO",
   "BG","HR","SI","DK","SE","FI",
   "EE","LV","LT","IE","LU","GR",
-  "CY","MT"
+  "CY","MT","NO","CH","ME","MK","TR","IS","RS",
 ), ]
 
 ```
@@ -150,24 +152,6 @@ Variable 1
 
 
 data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
-
-
-
-europe<-library(sf)
-
-library(giscoR)
-
-europe <- gisco_get_countries(
-  resolution = "20"
-)
-
-europe <- europe[europe$CNTR_ID %in% c(
-  "NL","DE","FR","BE","IT","ES","PT",
-  "AT","PL","CZ","SK","HU","RO",
-  "BG","HR","SI","DK","SE","FI",
-  "EE","LV","LT","IE","LU","GR",
-  "CY","MT"
-), ]
 
 ```
 
@@ -194,6 +178,7 @@ ggplot(data) +
     ylim = c(34, 72),
     expand = FALSE
   )+
+  labs(title="Map rent", fill="Variation")+
   scale_fill_viridis_c() +
   theme_void()
 
