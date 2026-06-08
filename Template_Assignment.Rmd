@@ -14,6 +14,8 @@ install.packages("rmarkdown")
 library(readxl)
 library(sf)
 install.packages("sf")
+install.packages("giscoR")
+library(giscoR)
 library(dplyr)
 library(ggplot2)
 ```
@@ -105,7 +107,7 @@ rent<-rent[,c(1,18)]
 
 europemap<-st_read("CNTR_RG_20M_2024_3035.shp")
 
-data<-left_join(europemap, rent, join_by("NAME_ENGL"=="TIME"))
+data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
 
 data<- data %>% 
   filter(!is.na(Var))
@@ -114,8 +116,29 @@ data<-data[1:33,]
 
 ggplot(data) +
   geom_sf(aes(fill = Var)) +
+  coord_sf(
+    xlim = c(-25, 45),
+    ylim = c(34, 72),
+    expand = FALSE
+  )+
   scale_fill_viridis_c() +
   theme_void()
+
+europe<-library(sf)
+
+library(giscoR)
+
+europe <- gisco_get_countries(
+  resolution = "20"
+)
+
+europe <- europe[europe$CNTR_ID %in% c(
+  "NL","DE","FR","BE","IT","ES","PT",
+  "AT","PL","CZ","SK","HU","RO",
+  "BG","HR","SI","DK","SE","FI",
+  "EE","LV","LT","IE","LU","GR",
+  "CY","MT"
+), ]
 
 ```
 
