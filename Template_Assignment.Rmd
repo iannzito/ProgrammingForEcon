@@ -68,6 +68,8 @@ europe <- gisco_get_countries(
   resolution = "20"
 )
 
+wage<-read_xlsx("tps00155_page_spreadsheet.xlsx")
+
 ```
 
 midwest is an example dataset included in the tidyverse package
@@ -140,6 +142,15 @@ europe <- europe[europe$CNTR_ID %in% c(
   "CY","MT","NO","CH","ME","MK","TR","IS","RS"
 ), ]
 
+# wage cleaning
+
+colnames(wage)<-wage[7,]
+
+wage<-wage[c(-1:-12,-16,-24:-25,-32,-38:-44,-53:-57),]
+
+wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
+
+wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 
 
 ```
@@ -166,10 +177,7 @@ Variable 2
 ## 3.3 Visualize temporal variation
 
 ```{r}
-```{r}
-library(dplyr)
-library(tidyr)
-library(ggplot2)
+
 
 # Calculate EU average each year
 temporal <- analysis %>%
