@@ -179,7 +179,7 @@ ggplot(data) +
     expand = FALSE
   )+
   labs(title="Map rent", fill="Variation")+
-  scale_fill_viridis_c() +
+  scale_fill_viridis_c(labels = scales::label_percent(accuracy=1)) +
   theme_void()
 
 
