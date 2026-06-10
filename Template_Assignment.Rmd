@@ -106,8 +106,12 @@ Say we want to include only larger distances (above 2) in our dataset, we can fi
 
 ```{r data_cleaning}
 
-#rent cleaning
 
+
+
+# =============================================================================
+#rent cleaning
+# =============================================================================
 colnames(rent)<-rent[8,]
 
 rent<-rent[-1:-10,]
@@ -132,7 +136,10 @@ rent <- rent %>%
 rent <- rent %>%
   mutate(across(2:ncol(rent), as.numeric))
 
+
+# =============================================================================
 # europe cleaning
+#==============================================================================
 
 europe <- europe[europe$CNTR_ID %in% c(
   "NL","DE","FR","BE","IT","ES","PT",
@@ -142,8 +149,10 @@ europe <- europe[europe$CNTR_ID %in% c(
   "CY","MT","NO","CH","ME","MK","TR","IS","RS"
 ), ]
 
-# wage cleaning
 
+# =============================================================================
+# wage cleaning
+#==============================================================================
 colnames(wage)<-wage[7,]
 
 wage<-wage[c(-1:-12,-16,-24:-25,-32,-38:-44,-53:-57),]
@@ -178,8 +187,9 @@ Variable 2
 
 ```{r}
 
-
+# =============================================================================
 # Calculate EU average each year
+# =============================================================================
 temporal <- analysis %>%
   group_by(year) %>%
   summarise(
@@ -187,7 +197,12 @@ temporal <- analysis %>%
     avg_wage_growth = mean(wage_growth, na.rm = TRUE)
   )
 
+
+
+
+# =============================================================================
 # Convert to long format for plotting
+# =============================================================================
 temporal_long <- temporal %>%
   pivot_longer(
     cols = c(avg_hicp, avg_wage_growth),
@@ -195,7 +210,12 @@ temporal_long <- temporal %>%
     values_to = "value"
   )
 
+
+
+
+# =============================================================================
 # Plot
+# =============================================================================
 ggplot(temporal_long,
        aes(x = year,
            y = value,
@@ -248,7 +268,11 @@ What is the poverty rate by state?
 
 ```{r visualise_subpopulations}
 dataset$inmetro <- dataset$inmetro %>% as.factor()
+
+
+# =============================================================================
 # Boxplot of poverty rate by state using the 'midwest' dataset
+# =============================================================================
 ggplot(dataset, aes(x = inmetro, y = percadultpoverty)) +
   geom_boxplot() +
   labs(
