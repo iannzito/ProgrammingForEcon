@@ -319,7 +319,7 @@ ggplot(subpop, aes(x = min_wage_status, y = Var, fill = min_wage_status)) +
   theme_minimal() +
   theme(legend.position = "none")
 ```
-#
+
 
 Here you provide a description of why the plot above is relevant to your specific social problem.
 
