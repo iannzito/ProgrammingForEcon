@@ -110,7 +110,7 @@ Say we want to include only larger distances (above 2) in our dataset, we can fi
 
 
 # =============================================================================
-#rent cleaning
+#rent cleaning, deleted NA columns and only selected values after 2014 and then calculated var between 2015 and 2025
 # =============================================================================
 colnames(rent)<-rent[8,]
 
