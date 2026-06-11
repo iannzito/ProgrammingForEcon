@@ -197,11 +197,10 @@ wage_long <- wage %>%
     names_to = "year",
     values_to = "wage_growth"
   ) %>%
-  mutate(
-    year = as.numeric(year),
-    wage_growth = as.numeric(wage_growth)
-  )
-
+ mutate(
+  year = as.numeric(str_extract(year, "\\d{4}")),
+  wage_growth = as.numeric(wage_growth)
+)
 analysis <- left_join(
   hicp_long,
   wage_long,
@@ -221,8 +220,14 @@ temporal <- analysis %>%
   group_by(year) %>%
   summarise(
     avg_hicp = mean(hicp, na.rm = TRUE),
-    avg_wage_growth = mean(wage_growth, na.rm = TRUE)
-  )
+    avg_wage = mean(wage_growth, na.rm = TRUE)
+  ) %>%
+  arrange(year) %>%
+  mutate(
+    avg_hicp        = avg_hicp / avg_hicp[year == 2020] * 100,
+    avg_wage_growth = avg_wage / avg_wage[year == 2020] * 100
+  ) %>%
+  select(year, avg_hicp, avg_wage_growth)
 
 
 
@@ -231,6 +236,7 @@ temporal <- analysis %>%
 # Convert to long format for plotting
 # =============================================================================
 temporal_long <- temporal %>%
+  filter(year >= 2020) %>%
   pivot_longer(
     cols = c(avg_hicp, avg_wage_growth),
     names_to = "variable",
@@ -247,12 +253,12 @@ ggplot(temporal_long,
        aes(x = year,
            y = value,
            colour = variable)) +
-  geom_line(linewidth = 1.2) +
-  geom_point(size = 2) +
+ geom_line(linewidth = 1.2, na.rm = TRUE) +
+geom_point(size = 2, na.rm = TRUE) +
   labs(
     title = "Temporal Variation of HICP and Minimum Wage Growth",
     x = "Year",
-    y = "Percent (%)",
+   y = "Index (2020 = 100)",
     colour = "Indicator"
   ) +
   scale_colour_manual(
