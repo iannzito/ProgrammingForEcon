@@ -302,23 +302,22 @@ Here you provide a description of why the plot above is relevant to your specifi
 What is the poverty rate by state?
 
 ```{r visualise_subpopulations}
-dataset$inmetro <- dataset$inmetro %>% as.factor()
+# Step 1: which countries have a minimum wage? (the ones that show up in the wage data)
+wage_countries <- unique(wage_long$TIME)
 
+# Step 2: label each country as being in one group or the other
+subpop <- rent %>%
+  mutate(min_wage_status = ifelse(TIME %in% wage_countries,
+                                  "Has minimum wage", "No minimum wage"))
 
-# =============================================================================
-# Boxplot of poverty rate by state using the 'midwest' dataset
-# =============================================================================
-ggplot(dataset, aes(x = inmetro, y = percadultpoverty)) +
+# Step 3: boxplot comparing rent inflation between the two groups
+ggplot(subpop, aes(x = min_wage_status, y = Var, fill = min_wage_status)) +
   geom_boxplot() +
-  labs(
-    title = "Distribution of Poverty Rates by Metropolitan status (Midwest counties)",
-    x = "Metropolitan Area",
-    y = "Poverty Rate of Adults (%)"
-  ) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  labs(title = "Rent inflation 2015–2025, by minimum-wage status",
+       x = NULL, y = "Change since 2015") +
   theme_minimal() +
-  theme(
-    legend.position = "right"
-  )
+  theme(legend.position = "none")
 ```
 
 Here you provide a description of why the plot above is relevant to your specific social problem.
