@@ -181,7 +181,7 @@ Variable 2
 
 ```{r gen_var2}
 
-data <- europe
+
 
 hicp_long <- rent %>%
   pivot_longer(
@@ -279,7 +279,8 @@ geom_point(size = 2, na.rm = TRUE) +
 
 ```{r visualise_map}
 
-map_data <- left_join(europe, rent, join_by("NAME_ENGL" == "TIME"))
+map_data <- left_join(europe, rent, join_by("NAME_ENGL" == "TIME")) %>% 
+  st_as_sf()
 
 ggplot(map_data) +
   geom_sf(aes(fill = Var)) +
@@ -328,6 +329,34 @@ Here you provide a description of why the plot above is relevant to your specifi
 Analyze the relationship between two variables.
 
 ```{r analysis}
+
+# Summarise average wage growth per country over the full period
+wage_avg <- wage_long %>%
+  group_by(TIME) %>%
+  summarise(avg_wage_growth = mean(wage_growth, na.rm = TRUE))
+
+# Join with rent variation
+scatter_data <- left_join(
+  rent %>% select(TIME, Var),
+  wage_avg,
+  by = "TIME"
+) %>%
+  filter(!is.na(Var), !is.na(avg_wage_growth))
+
+# Scatter plot
+ggplot(scatter_data, aes(x = avg_wage_growth, y = Var)) +
+  geom_point(colour = "steelblue", size = 3) +
+  geom_smooth(method = "lm", se = TRUE, colour = "red", fill = "pink") +
+  geom_text(aes(label=TIME),vjust = -0.7, size = 2.8) +
+  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
+  scale_x_continuous(labels = scales::label_percent(accuracy = 1)) +
+  labs(
+    title = "Rent Inflation vs. Minimum Wage Growth (2015–2025)",
+    x = "Average Minimum Wage Growth (2015–2025)",
+    y = "Rent Inflation (2015–2025)",
+    caption = "Each point represents a country"
+  ) +
+  theme_minimal()
 
 ```
 
