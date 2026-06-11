@@ -279,15 +279,17 @@ geom_point(size = 2, na.rm = TRUE) +
 
 ```{r visualise_map}
 
-ggplot(data) +
+map_data <- left_join(europe, rent, join_by("NAME_ENGL" == "TIME"))
+
+ggplot(map_data) +
   geom_sf(aes(fill = Var)) +
   coord_sf(
     xlim = c(-25, 45),
     ylim = c(34, 72),
     expand = FALSE
-  )+
-  labs(title="Map rent", fill="Variation")+
-  scale_fill_viridis_c(labels = scales::label_percent(accuracy=1)) +
+  ) +
+  labs(title = "Map rent", fill = "Variation") +
+  scale_fill_viridis_c(labels = scales::label_percent(accuracy = 1)) +
   theme_void()
 
 
