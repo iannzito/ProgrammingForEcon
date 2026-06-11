@@ -33,7 +33,7 @@ Noel Kona
 Giorgia Tanzi 
 Iann Soffried 
 Julian Trinkl 
-Mourris Nouwens 
+Morris Nouwens 
 Dania Al Khulaifi 
 
 Include the tutorial group number
