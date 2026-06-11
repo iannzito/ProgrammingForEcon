@@ -181,6 +181,33 @@ Variable 2
 
 ```{r gen_var2}
 
+data <- europe
+
+hicp_long <- rent %>%
+  pivot_longer(
+    cols = matches("^20"),
+    names_to = "year",
+    values_to = "hicp"
+  ) %>%
+  mutate(year = as.numeric(year))
+
+wage_long <- wage %>%
+  pivot_longer(
+    cols = matches("^20"),
+    names_to = "year",
+    values_to = "wage_growth"
+  ) %>%
+  mutate(
+    year = as.numeric(year),
+    wage_growth = as.numeric(wage_growth)
+  )
+
+analysis <- left_join(
+  hicp_long,
+  wage_long,
+  by = c("TIME", "year")
+)
+
 ```
 
 ## 3.3 Visualize temporal variation
