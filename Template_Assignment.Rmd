@@ -220,23 +220,6 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 ## Creating new variables
 
 
-HICP Inflation:
-
-```{r gen_var1, include=FALSE}
-
-
-
-
-```
-
-Wage Growth:
-
-```{r gen_var2, include=FALSE}
-
-
-
-
-
 # Create long format HICP variable
 hicp_long <- rent %>%
   pivot_longer(
@@ -268,7 +251,6 @@ analysis <- left_join(
   wage_long,
   by = c("TIME", "year")
 )
-
 
 
 # Create minimum wage status variable
