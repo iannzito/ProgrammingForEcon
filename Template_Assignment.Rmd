@@ -307,6 +307,7 @@ geom_point(size = 2, na.rm = TRUE) +
   theme_minimal()
 
 ```
+The graph above directly tests our social question. It shows that in 2020 to 2025 the minimum wage growth is growing faster (blue) than the HICP inflation (red). This graph suggests that at the average-level the minimum-wage policy broadly kept up with the cost of living over this time period. Furthermore, it shows that there was most likely a deliberate choice to increase wages after the inflation spikes in 2021-2022. However, keep in mind that this graph shows an average which hides large differences between countries (see sections 3.4 and 3.5).
 
 ## 3.4 Visualize spatial variation
 
