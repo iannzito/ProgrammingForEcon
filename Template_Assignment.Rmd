@@ -100,6 +100,16 @@ inline_code = TRUE
 
 These are things that are usually included in the metadata of the dataset. For your project, you need to provide us with the information from your metadata that we need to understand your dataset of choice.
 
+This study's aim is to assess wages' rise in line with the country's rising living costs across Europe through the use of three datasets.
+
+The Harmonised Index of Consumer Prices (HICP) was used for tracking rent/housing rates in Europe. The data were sourced from Eurostat and cover the annual rate of inflation for Europe up to the present (2022). The dataset also enables us to analyze the way that housing costs change over time (i.e., rent inflation rates from 2015 – 2025).
+
+The second dataset used is based on the growth of the minimum wage rate in European countries as supplied by Eurostat. The statistical measures capture the annual increase in the statutory minimum wage for the countries in Europe that have a National Minimum Wage. This data allows for comparison of wage increases with others and helps determine if wage growth has been enough to keep up with price increases.
+
+The third dataset used contains the geographical boundaries for European Countries that were supplied through the spatial package 'giscoR'. These geographical boundaries are used to illustrate rent inflation differences between the countries of Europe with maps.
+
+When combined, these three individual datasets allow for comparison of how, both over time the cost to rent housing and minimum wage are related.
+
 ## 2.3 Describe the type of variables included
 
 Think of things like:
@@ -108,6 +118,16 @@ Think of things like:
 
 -   Have they been measured by interviewing individuals or is the data coming from administrative sources?
 
+Socioeconomic and economic indices, measured at the nation level, are the primary components of the datasets.
+
+The rent data set comprises quantitative variables representing HICP (harmonised indices of consumer prices) values per year, which measure the change in consumer prices for housing-related items. This information allows analysts to assess how living costs have changed and how inflation is affecting households.
+
+Wage datasets consist of quantitative variables that indicate how statutory minimum wage rates have changed from one year to another across the various countries. Labour force conditions and income levels among low-wage employees can therefore be analysed based on the available wage indices.
+
+Country boundaries or country identifiers constitute the variables in the geographic dataset. While these geographic variables do not directly measure social or economic conditions, they allow for the geographical visualisation of socioeconomic indices.
+
+The datasets originate from governmental administrations and official statistics rather than personal surveys or interviews. Economic data were gathered and developed by national statistical agencies and published by Eurostat. Thus, the datasets include standardised and equivalent figures across all European countries.
+we removed bosnia, turkey, and albania because some data was missing from them.
 *For the sake of this example, I will continue with the assignment...*
 
 # Part 3 - Quantifying
@@ -121,9 +141,9 @@ Say we want to include only larger distances (above 2) in our dataset, we can fi
 
 
 
-# =============================================================================
+
 #rent cleaning, deleted NA columns and only selected values after 2014 and then calculated var between 2015 and 2025
-# =============================================================================
+
 colnames(rent)<-rent[8,]
 
 rent<-rent[-1:-10,]
@@ -149,9 +169,9 @@ rent <- rent %>%
   mutate(across(2:ncol(rent), as.numeric))
 
 
-# =============================================================================
+
 # europe cleaning
-#==============================================================================
+
 
 europe <- europe[europe$CNTR_ID %in% c(
   "NL","DE","FR","BE","IT","ES","PT",
@@ -162,9 +182,9 @@ europe <- europe[europe$CNTR_ID %in% c(
 ), ]
 
 
-# =============================================================================
+
 # wage cleaning
-#==============================================================================
+
 colnames(wage)<-wage[7,]
 
 wage<-wage[c(-1:-12,-16,-24:-25,-32,-38:-44,-53:-57),]
@@ -225,9 +245,9 @@ analysis <- left_join(
 
 ```{r, show=F}
 
-# =============================================================================
+
 # Calculate EU average each year
-# =============================================================================
+
 temporal <- analysis %>%
   group_by(year) %>%
   summarise(
@@ -244,9 +264,9 @@ temporal <- analysis %>%
 
 
 
-# =============================================================================
+
 # Convert to long format for plotting
-# =============================================================================
+
 temporal_long <- temporal %>%
   filter(year >= 2020) %>%
   pivot_longer(
@@ -258,9 +278,9 @@ temporal_long <- temporal %>%
 
 
 
-# =============================================================================
+
 # Plot
-# =============================================================================
+
 ggplot(temporal_long,
        aes(x = year,
            y = value,
