@@ -164,7 +164,7 @@ rent <- rent %>%
   mutate(
     `2015` = as.numeric(gsub("[^0-9.]", "", `2015`)),
     `2025` = as.numeric(gsub("[^0-9.]", "", `2025`)),
-    Var = (`2025` - `2015`) / `2015`
+    Var = ((`2025` - `2015`) / `2015`)*100
   )
 
 rent <- rent %>%
@@ -324,8 +324,24 @@ ggplot(map_data) +
     ylim = c(34, 72),
     expand = FALSE
   ) +
-  labs(title = "Map rent", fill = "Variation") +
-  scale_fill_viridis_c(labels = scales::label_percent(accuracy = 1)) +
+  
+  scale_color_gradient(
+  low = "lightblue",
+  high = "darkblue",
+  labels = scales::label_number(suffix = "%")
+) +
+labs(
+  title = "Map increase in prices between 2015-2025",
+  fill = "Increase in rent(%)"
+) +
+  
+  
+  
+   #scale_color_gradient(low="lightblue", high= "darkblue") +
+  #labs(title = "Map increase in prices between 2015-2025", fill = "Variation of rent prices") +
+ 
+  #scale_fill_viridis_c(labels = scales::label_percent(accuracy = 1)) + 
+ 
   theme_void()
 
 
