@@ -227,7 +227,7 @@ rent <- rent %>%
     Var = ((`2025` - `2015`) / `2015`) * 100
   )
 
-
+####bla
 # Create long format HICP variable
 hicp_long <- rent %>%
   pivot_longer(
