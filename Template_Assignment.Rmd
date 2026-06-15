@@ -77,7 +77,7 @@ midwest is an example dataset included in the tidyverse package
 
 ## 2.2 Provide a short summary of the dataset(s)
 
-```{r, include=FALSE}
+```{r, echo=FALSE}
 head(wage)
 
 head(rent)
@@ -120,7 +120,7 @@ Country boundaries or country identifiers constitute the variables in the geogra
 The datasets originate from governmental administrations and official statistics rather than personal surveys or interviews. Economic data were gathered and developed by national statistical agencies and published by Eurostat. Thus, the datasets include standardised and equivalent figures across all European countries.
 we removed bosnia, turkey, and albania because some data was missing from them.
 
-
+```{r, echo=FALSE}
 variables <- data.frame(
   Variable = c(
     "TIME",
@@ -149,7 +149,7 @@ variables <- data.frame(
 )
 
 knitr::kable(variables)
-
+```
 
 # Part 3 - Quantifying
 
@@ -200,7 +200,7 @@ europe <- europe[europe$CNTR_ID %in% c(
   "CY","MT","NO","CH","ME","MK","TR","IS","RS"
 ), ]
 
-
+data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
 
 # wage cleaning
 
@@ -219,13 +219,22 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 ## 3.2 Generate necessary variables
 ## Creating new variables
 
-```{r creating_variables, echo=FALSE}
 
-# Create percentage change in HICP between 2015 and 2025
-rent <- rent %>%
-  mutate(
-    Var = ((`2025` - `2015`) / `2015`) * 100
-  )
+HICP Inflation:
+
+```{r gen_var1, include=FALSE}
+
+
+
+
+```
+
+Wage Growth:
+
+```{r gen_var2, include=FALSE}
+
+
+
 
 
 # Create long format HICP variable
@@ -259,6 +268,7 @@ analysis <- left_join(
   wage_long,
   by = c("TIME", "year")
 )
+
 
 
 # Create minimum wage status variable
