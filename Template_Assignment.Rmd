@@ -357,7 +357,9 @@ ggplot(subpop, aes(x = min_wage_status, y = Var, fill = min_wage_status)) +
 ```
 
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+This plot above shows price inflation between countries who have a statutory minimum wage (salmon) and the ones that do not (cyan). Countries with a minimum wage saw both higher and far more variable inflation, a median around 48% and a spread of a 100%, while countries without a minimum wage were lower and tightly clustered together, with a median of 26%. First impression, this looks like having a minimum wage comes with higher inflation, but that is not entirely true. The countries with "no minimum wage" is made up of countries that are wealthy and economically stable (such as Denmark, Sweden, Finland, Austria and Switzerland). Meanwhile the group with minimum wage includes countries from Central Europe and Eastern Europe that have experienced sharp rises in prices. The two group have many differences, not only in minimum wage policies, so this chart shows association, not a cause. For the social problem at hand, it highlights that low-income workers in minimum wage countries often faced far steeper changes in cost-of-living, making it far more important whether their wages kept up.
+
+Two countries in the "no minimum wage" group are outliers, which are Iceland and Austria, showing higher inflation regardless. This shows that the grouping is not always an indicator of whether or not you have high inflation.
 
 ## 3.6 Event analysis
 
