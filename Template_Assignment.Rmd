@@ -248,12 +248,19 @@ rent <- rent %>%
 
 
 country_variation <- analysis %>%
+  filter(TIME %in% c("NL", "DE", "FR")) %>%   # pick your 3 countries
   group_by(TIME) %>%
   summarise(
     avg_wage_growth = mean(wage_growth, na.rm = TRUE)
+  ) %>%
+  left_join(
+    rent %>%
+      select(TIME, Var),
+    by = "TIME"
   )
 
 knitr::kable(country_variation)
+
 
 ```
 
