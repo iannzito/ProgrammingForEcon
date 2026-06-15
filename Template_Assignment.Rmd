@@ -423,9 +423,9 @@ geom_point(size = 2, na.rm = TRUE) +
            y = 12,
            label = "Start of Russia War") +
   labs(
-    title = "Temporal Variation of HICP and Minimum Wage Growth",
+    title = "Annual percentual change of HICP and Minimum Wage Growth",
     x = "Year",
-   y = "Index (2020 = 100)",
+   y = "Percentage variation (yoy)",
     colour = "Indicator"
   ) +
   scale_colour_manual(
