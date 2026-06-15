@@ -77,7 +77,7 @@ midwest is an example dataset included in the tidyverse package
 
 ## 2.2 Provide a short summary of the dataset(s)
 
-```{r, include=FALSE}
+```{r, echo=FALSE}
 head(wage)
 
 head(rent)
@@ -120,7 +120,7 @@ Country boundaries or country identifiers constitute the variables in the geogra
 The datasets originate from governmental administrations and official statistics rather than personal surveys or interviews. Economic data were gathered and developed by national statistical agencies and published by Eurostat. Thus, the datasets include standardised and equivalent figures across all European countries.
 we removed bosnia, turkey, and albania because some data was missing from them.
 
-
+```{r, echo=FALSE}
 variables <- data.frame(
   Variable = c(
     "TIME",
@@ -149,7 +149,7 @@ variables <- data.frame(
 )
 
 knitr::kable(variables)
-
+```
 
 # Part 3 - Quantifying
 
@@ -200,7 +200,7 @@ europe <- europe[europe$CNTR_ID %in% c(
   "CY","MT","NO","CH","ME","MK","TR","IS","RS"
 ), ]
 
-
+data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
 
 # wage cleaning
 
@@ -223,7 +223,7 @@ HICP Inflation:
 ```{r gen_var1, include=FALSE}
 
 
-data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
+
 
 ```
 
@@ -233,29 +233,7 @@ Wage Growth:
 
 
 
-hicp_long <- rent %>%
-  pivot_longer(
-    cols = matches("^20"),
-    names_to = "year",
-    values_to = "hicp"
-  ) %>%
-  mutate(year = as.numeric(year))
 
-wage_long <- wage %>%
-  pivot_longer(
-    cols = matches("^20"),
-    names_to = "year",
-    values_to = "wage_growth"
-  ) %>%
- mutate(
-  year = as.numeric(str_extract(year, "\\d{4}")),
-  wage_growth = as.numeric(wage_growth)
-)
-analysis <- left_join(
-  hicp_long,
-  wage_long,
-  by = c("TIME", "year")
-)
 
 ```
 
