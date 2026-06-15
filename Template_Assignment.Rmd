@@ -219,6 +219,8 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 ## 3.2 Generate necessary variables
 ## Creating new variables
 
+```{r, echo=FALSE}
+
 # Create percentage change in HICP between 2015 and 2025
 rent <- rent %>%
   mutate(
