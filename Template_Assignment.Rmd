@@ -248,7 +248,7 @@ rent <- rent %>%
 
 
 country_variation <- analysis %>%
-  filter(TIME %in% c("NL", "DE", "FR")) %>%   # pick your 3 countries
+  filter(TIME %in% c("Netherlands", "Germany", "France")) %>% 
   group_by(TIME) %>%
   summarise(
     avg_wage_growth = mean(wage_growth, na.rm = TRUE)
