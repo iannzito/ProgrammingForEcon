@@ -331,7 +331,7 @@ ggplot(map_data) +
 
 ```
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+The map shows how much consumer-prices rose in each country between 2015-2025 (not each countries data starts in 2015), and makes clear that not each country has the same growth in prices. With some countries having far steeper growths than others. The largest increases are seen in Eastern-Europe, with a clear example being Hungary that had a growth of 100%. Meanwhile, the countries in Western-Europe, such as France, Germany and Italy saw smaller rises (around 25%). This matters for the social problem, because the countries who face far higher growth in costs of living, will require bigger rises in wage otherwise it will not be sufficient and would leave them off worse. This graph also explains that section 3.3 hides this data, this proves that a single trend line cannot capture each country's situation. (Türkiye is shown in gray since there was no data)
 
 ## 3.5 Visualize sub-population variation
 
