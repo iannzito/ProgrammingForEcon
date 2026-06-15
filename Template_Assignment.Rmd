@@ -56,6 +56,9 @@ The problem of the growing wages and the rising cost of living is relevant, beca
 The report will fill in the gap by comparing consumer-price inflation and minimum-wage levels across European countries throughout recent years. Existing reports look globally/nationally, but cross-country researches are under-examined, which is why this report will use cross-country methods to deepen such
 
 # Part 2 - Data Sourcing
+2.1: Data sourcing 
+Eurostat was selected as the data source for both European Union's Harmonized Index of Consumer Prices (HICP) and the European Union's minimum wage. Eurostat uses a harmonised and standardised way of collecting statistics which allow for reliable cross-country comparisons. It collects and compiles data from national statistical offices using common methods to improve reliability and consistency. This makes Eurostat very suitable for determining whether minimum wages relative to the cost of living have been increasing at an adequate rate throughout Europe.
+There are some limitations to our data that deserve mention. The HICP data only takes into account average price movements of all consumer goods in a country and does not provide data for regional price variations or for the individual consumer's experience. Furthermore, the minimum wage database only contains data from countries that have followed a statutory National Minimum Wage system. This limits the comparisons between countries that have relied primarily on collective bargaining systems. Lastly, there were missing values for some observations, which resulted in an inability to include several countries in the comparison.
 
 ## 2.1 Load in the data
 
@@ -149,7 +152,12 @@ knitr::kable(variables)
 
 ## 3.1 Data cleaning
 
-Say we want to include only larger distances (above 2) in our dataset, we can filter for this.
+How did we clean the data? 
+
+We processed the HICP, minimum wage, and geographic dataset. This involved a three-step procedure:
+1. Cleaning of the data by removing metadata, unnecessary data rows, and unnecessary data columns: The original Eurostat datasets included descriptive metadata, empty or missing values, and variable definitions that were not needed for our research question; we did not require these records, so they were eliminated. Therefore, we retained only those country-level observations and years that were relevant to our analysis.
+2. Standardizing and transforming the data into a more consistent format: We changed the format of both HICP and minimum wage values to a numeric format, and restructured each dataset in a consistent country-year format; Additionally, we also created a new variable that reflects the percent change in HICP between 2015 and 2025. This will help in comparing inflation trends between countries.
+3. Merging datasets and removing incomplete observations: The cleaned HICP and minimum wage datasets were merged based on country and year matching records; In addition, the geographic dataset was merged based on matching records using country names. Any countries that did not have sufficient records to perform consistent and comparable analyses or visualizations were excluded.
 
 ```{r data_cleaning, include=FALSE}
 
