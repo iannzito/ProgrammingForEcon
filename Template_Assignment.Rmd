@@ -47,17 +47,20 @@ Simon Loop
 
 # Part 1 - Identify a Social Problem
 
-The social problem being discussed is whether the growth of wages keep up with the rising costs of living. The central question of this research is: do the wages of the lowest-paid workers rise enough for them to be able to afford their current lifestyle? And does that apply across Europe?
+The social problem being discussed is whether the growth of wages keeps up with the rising costs of living. The central question of this research is: does the growth of wages of the lowest-paid workers rise enough for them to be able to afford their current lifestyle? And does that apply across Europe?
 
 Use APA referencing throughout your document. [Here's a link to some explanation.](https://www.mendeley.com/guides/apa-citation-guide/)
 
 ## 1.1 Describe the Social Problem
 
-Include the following:
+-   The social problem:
+The social problem is about the prices of living rising faster compared to wages, resulting in a worker's real purchasing power falling even if their wages rise on paper. This leads to workers being able to afford less each year.
 
--   Why is this relevant?
+-   The relevance:
+The problem of the growing wages and the rising cost of living is relevant, because in recent years many countries in Europe have faced a sharp rise in prices, while the growth of wages falls behind, leaving many households with low-income struggling to financially keep up with the new living costs.
 
--   ...
+-   What the report will answer:
+The report will fill in the gap by comparing consumer-price inflation and minimum-wage levels across European countries throughout recent years. Existing reports look globally/nationally, but cross-country researches are under-examined, which is why this report will use cross-country methods to deepen such
 
 # Part 2 - Data Sourcing
 
