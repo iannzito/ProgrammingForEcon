@@ -385,7 +385,7 @@ Analyze the relationship between two variables.
 
 
 
-temporal_long <- temporal_long %>%
+temporal_long2 <- temporal_long %>%
   # 1. Group by the indicator so calculations don't cross-contaminate
   group_by(variable) %>%
   
@@ -401,7 +401,11 @@ temporal_long <- temporal_long %>%
   ungroup()
 
 
-ggplot(temporal_long,
+temporal_long2<-temporal_long2[-1,]
+
+temporal_long2<-temporal_long2[-6,]
+
+ggplot(temporal_long2,
        aes(x = year,
            y = pct_growth_yoy,
            colour = variable)) +
@@ -411,17 +415,13 @@ geom_point(size = 2, na.rm = TRUE) +
              linetype = "dotted", 
              color = "darkgray", 
              linewidth = 0.8) +
+  scale_y_continuous(limits = c(0,12)) +
   
   # 2. Add the text label just above or near the top of the line
   annotate("text", 
            x = 2022, 
-           y = max(temporal_long$value, na.rm = TRUE) * 1.02, # Places it slightly above the highest data point
-           label = "Start of Russia War", 
-           angle = 0,             # Keep it horizontal (set to 90 if you want it vertical)
-           vjust = -0.5,          # Adjust vertical padding
-           hjust = 0.5,           # Center the text perfectly on the line
-           color = "black",
-           fontface = "italic") +
+           y = 12,
+           label = "Start of Russia War") +
   labs(
     title = "Temporal Variation of HICP and Minimum Wage Growth",
     x = "Year",
@@ -430,8 +430,8 @@ geom_point(size = 2, na.rm = TRUE) +
   ) +
   scale_colour_manual(
     values = c(
-      "avg_hicp" = "red",
-      "avg_wage_growth" = "blue"
+      "avg_hicp" = "orange",
+      "avg_wage_growth" = "purple"
     ),
     labels = c(
       "HICP Inflation",
