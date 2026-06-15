@@ -219,6 +219,11 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 ## 3.2 Generate necessary variables
 ## Creating new variables
 
+# Create percentage change in HICP between 2015 and 2025
+rent <- rent %>%
+  mutate(
+    Var = ((`2025` - `2015`) / `2015`) * 100
+  )
 
 # Create long format HICP variable
 hicp_long <- rent %>%
