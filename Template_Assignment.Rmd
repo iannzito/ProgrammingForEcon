@@ -364,31 +364,60 @@ Analyze the relationship between two variables.
 
 ```{r analysis, echo=FALSE}
 
-# Summarise average wage growth per country over the full period
-wage_avg <- wage_long %>%
-  group_by(TIME) %>%
-  summarise(avg_wage_growth = mean(wage_growth, na.rm = TRUE))
 
-# Join with rent variation
-scatter_data <- left_join(
-  rent %>% select(TIME, Var),
-  wage_avg,
-  by = "TIME"
-) %>%
-  filter(!is.na(Var), !is.na(avg_wage_growth))
 
-# Scatter plot
-ggplot(scatter_data, aes(x = avg_wage_growth, y = Var)) +
-  geom_point(colour = "steelblue", size = 3) +
-  geom_smooth(method = "lm", se = TRUE, colour = "red", fill = "pink") +
-  geom_text(aes(label=TIME),vjust = -0.7, size = 2.8) +
-  scale_y_continuous(labels = scales::label_percent(accuracy = 1)) +
-  scale_x_continuous(labels = scales::label_percent(accuracy = 1)) +
+temporal_long <- temporal_long %>%
+  # 1. Group by the indicator so calculations don't cross-contaminate
+  group_by(variable) %>%
+  
+  # 2. Ensure the data is in chronological order before calculating
+  arrange(year, .by_group = TRUE) %>%
+  
+  # 3. Calculate the year-over-year percentage change
+  mutate(
+    pct_growth_yoy = ((value - lag(value)) / lag(value)) * 100
+  ) %>%
+  
+  # 4. Always ungroup when you are done to prevent issues later
+  ungroup()
+
+
+ggplot(temporal_long,
+       aes(x = year,
+           y = pct_growth_yoy,
+           colour = variable)) +
+ geom_line(linewidth = 1.2, na.rm = TRUE) +
+geom_point(size = 2, na.rm = TRUE) +
+  geom_vline(xintercept = 2022, 
+             linetype = "dotted", 
+             color = "darkgray", 
+             linewidth = 0.8) +
+  
+  # 2. Add the text label just above or near the top of the line
+  annotate("text", 
+           x = 2022, 
+           y = max(temporal_long$value, na.rm = TRUE) * 1.02, # Places it slightly above the highest data point
+           label = "Start of Russia War", 
+           angle = 0,             # Keep it horizontal (set to 90 if you want it vertical)
+           vjust = -0.5,          # Adjust vertical padding
+           hjust = 0.5,           # Center the text perfectly on the line
+           color = "black",
+           fontface = "italic") +
   labs(
-    title = "Rent Inflation vs. Minimum Wage Growth (2015–2025)",
-    x = "Average Minimum Wage Growth (2015–2025)",
-    y = "Rent Inflation (2015–2025)",
-    caption = "Each point represents a country"
+    title = "Temporal Variation of HICP and Minimum Wage Growth",
+    x = "Year",
+   y = "Index (2020 = 100)",
+    colour = "Indicator"
+  ) +
+  scale_colour_manual(
+    values = c(
+      "avg_hicp" = "red",
+      "avg_wage_growth" = "blue"
+    ),
+    labels = c(
+      "HICP Inflation",
+      "Minimum Wage Growth"
+    )
   ) +
   theme_minimal()
 
