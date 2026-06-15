@@ -2,7 +2,9 @@
 title: "Template"
 author: "Studentnames and studentnumbers here"
 date: "`r Sys.Date()`"
-output: pdf_document
+output: 
+ pdf_document:
+   latex_engine: xelatex
 ---
 
 # Set-up your environment
@@ -16,7 +18,7 @@ install.packages("giscoR")
 install.packages("tinytex")
 ```
 
-```{r packages}
+```{r packages, include=FALSE}
 require(tidyverse)
 require(rmarkdown)
 require(yaml)
@@ -26,7 +28,6 @@ library(giscoR)
 library(dplyr)
 library(ggplot2)
 library(tinytex)
-tinytex::install_tinytex(force = TRUE)
 ```
 
 # Title Page
@@ -69,7 +70,7 @@ The report will fill in the gap by comparing consumer-price inflation and minimu
 
 Preferably from a URL, but if not, make sure to download the data and store it in a shared location that you can load the data in from. Do not store the data in a folder you include in the Github repository!
 
-```{r loading_data}
+```{r loading_data, include=FALSE}
 
 rent<-read_xlsx("prc_hicp_aind__custom_12680989_spreadsheet (1).xlsx")
 
@@ -85,7 +86,7 @@ midwest is an example dataset included in the tidyverse package
 
 ## 2.2 Provide a short summary of the dataset(s)
 
-```{r}
+```{r, include=FALSE}
 head(wage)
 
 head(rent)
@@ -137,7 +138,7 @@ we removed bosnia, turkey, and albania because some data was missing from them.
 
 Say we want to include only larger distances (above 2) in our dataset, we can filter for this.
 
-```{r data_cleaning, show=F}
+```{r data_cleaning, include=FALSE}
 
 
 
@@ -203,7 +204,7 @@ Please use a separate 'R block' of code for each type of cleaning. So, e.g. one 
 
 Variable 1
 
-```{r gen_var1, show=F}
+```{r gen_var1, include=FALSE}
 
 
 data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
@@ -212,7 +213,7 @@ data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
 
 Variable 2
 
-```{r gen_var2, show=F}
+```{r gen_var2, include=FALSE}
 
 
 
@@ -244,7 +245,7 @@ analysis <- left_join(
 
 ## 3.3 Visualize temporal variation
 
-```{r, show=F}
+```{r, echo=FALSE}
 
 
 # Calculate EU average each year
@@ -310,7 +311,7 @@ geom_point(size = 2, na.rm = TRUE) +
 
 ## 3.4 Visualize spatial variation
 
-```{r visualise_map, show=F}
+```{r visualise_map, echo=FALSE}
 
 map_data <- left_join(europe, rent, join_by("NAME_ENGL" == "TIME")) %>% 
   st_as_sf()
@@ -335,7 +336,7 @@ Here you provide a description of why the plot above is relevant to your specifi
 
 What is the poverty rate by state?
 
-```{r visualise_subpopulations, show=F}
+```{r visualise_subpopulations, echo=FALSE}
 # Step 1: which countries have a minimum wage? (the ones that show up in the wage data)
 wage_countries <- unique(wage_long$TIME)
 
@@ -361,7 +362,7 @@ Here you provide a description of why the plot above is relevant to your specifi
 
 Analyze the relationship between two variables.
 
-```{r analysis, show=f}
+```{r analysis, echo=FALSE}
 
 # Summarise average wage growth per country over the full period
 wage_avg <- wage_long %>%
