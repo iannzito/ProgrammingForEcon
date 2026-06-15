@@ -116,9 +116,9 @@ Say we want to include only larger distances (above 2) in our dataset, we can fi
 
 
 
-# =============================================================================
+
 #rent cleaning, deleted NA columns and only selected values after 2014 and then calculated var between 2015 and 2025
-# =============================================================================
+
 colnames(rent)<-rent[8,]
 
 rent<-rent[-1:-10,]
@@ -144,9 +144,9 @@ rent <- rent %>%
   mutate(across(2:ncol(rent), as.numeric))
 
 
-# =============================================================================
+
 # europe cleaning
-#==============================================================================
+
 
 europe <- europe[europe$CNTR_ID %in% c(
   "NL","DE","FR","BE","IT","ES","PT",
@@ -157,9 +157,9 @@ europe <- europe[europe$CNTR_ID %in% c(
 ), ]
 
 
-# =============================================================================
+
 # wage cleaning
-#==============================================================================
+
 colnames(wage)<-wage[7,]
 
 wage<-wage[c(-1:-12,-16,-24:-25,-32,-38:-44,-53:-57),]
@@ -220,9 +220,9 @@ analysis <- left_join(
 
 ```{r, show=F}
 
-# =============================================================================
+
 # Calculate EU average each year
-# =============================================================================
+
 temporal <- analysis %>%
   group_by(year) %>%
   summarise(
@@ -239,9 +239,9 @@ temporal <- analysis %>%
 
 
 
-# =============================================================================
+
 # Convert to long format for plotting
-# =============================================================================
+
 temporal_long <- temporal %>%
   filter(year >= 2020) %>%
   pivot_longer(
@@ -253,9 +253,9 @@ temporal_long <- temporal %>%
 
 
 
-# =============================================================================
+
 # Plot
-# =============================================================================
+
 ggplot(temporal_long,
        aes(x = year,
            y = value,
