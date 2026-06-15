@@ -164,7 +164,7 @@ rent <- rent %>%
   mutate(
     `2015` = as.numeric(gsub("[^0-9.]", "", `2015`)),
     `2025` = as.numeric(gsub("[^0-9.]", "", `2025`)),
-    Var = (`2025` - `2015`) / `2015`
+    Var = ((`2025` - `2015`) / `2015`)*100
   )
 
 rent <- rent %>%
@@ -308,6 +308,7 @@ geom_point(size = 2, na.rm = TRUE) +
   theme_minimal()
 
 ```
+The graph above directly tests our social question. It shows that in 2020 to 2025 the minimum wage growth is growing faster (blue) than the HICP inflation (red). This graph suggests that at the average-level the minimum-wage policy broadly kept up with the cost of living over this time period. Furthermore, it shows that there was most likely a deliberate choice to increase wages after the inflation spikes in 2021-2022. However, keep in mind that this graph shows an average which hides large differences between countries (see sections 3.4 and 3.5).
 
 ## 3.4 Visualize spatial variation
 
@@ -323,14 +324,30 @@ ggplot(map_data) +
     ylim = c(34, 72),
     expand = FALSE
   ) +
-  labs(title = "Map rent", fill = "Variation") +
-  scale_fill_viridis_c(labels = scales::label_percent(accuracy = 1)) +
+  
+  scale_color_gradient(
+  low = "lightblue",
+  high = "darkblue",
+  labels = scales::label_number(suffix = "%")
+) +
+labs(
+  title = "Map increase in prices between 2015-2025",
+  fill = "Increase in rent(%)"
+) +
+  
+  
+  
+   #scale_color_gradient(low="lightblue", high= "darkblue") +
+  #labs(title = "Map increase in prices between 2015-2025", fill = "Variation of rent prices") +
+ 
+  #scale_fill_viridis_c(labels = scales::label_percent(accuracy = 1)) + 
+ 
   theme_void()
 
 
 ```
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+The map shows how much consumer-prices rose in each country between 2015-2025 (not each countries data starts in 2015), and makes clear that not each country has the same growth in prices. With some countries having far steeper growths than others. The largest increases are seen in Eastern-Europe, with a clear example being Hungary that had a growth of 100%. Meanwhile, the countries in Western-Europe, such as France, Germany and Italy saw smaller rises (around 25%). This matters for the social problem, because the countries who face far higher growth in costs of living, will require bigger rises in wage otherwise it will not be sufficient and would leave them off worse. This graph also explains that section 3.3 hides this data, this proves that a single trend line cannot capture each country's situation. (Türkiye is shown in gray since there was no data)
 
 ## 3.5 Visualize sub-population variation
 
@@ -356,7 +373,9 @@ ggplot(subpop, aes(x = min_wage_status, y = Var, fill = min_wage_status)) +
 ```
 
 
-Here you provide a description of why the plot above is relevant to your specific social problem.
+This plot above shows price inflation between countries who have a statutory minimum wage (salmon) and the ones that do not (cyan). Countries with a minimum wage saw both higher and far more variable inflation, a median around 48% and a spread of a 100%, while countries without a minimum wage were lower and tightly clustered together, with a median of 26%. First impression, this looks like having a minimum wage comes with higher inflation, but that is not entirely true. The countries with "no minimum wage" is made up of countries that are wealthy and economically stable (such as Denmark, Sweden, Finland, Austria and Switzerland). Meanwhile the group with minimum wage includes countries from Central Europe and Eastern Europe that have experienced sharp rises in prices. The two group have many differences, not only in minimum wage policies, so this chart shows association, not a cause. For the social problem at hand, it highlights that low-income workers in minimum wage countries often faced far steeper changes in cost-of-living, making it far more important whether their wages kept up.
+
+Two countries in the "no minimum wage" group are outliers, which are Iceland and Austria, showing higher inflation regardless. This shows that the grouping is not always an indicator of whether or not you have high inflation.
 
 ## 3.6 Event analysis
 
