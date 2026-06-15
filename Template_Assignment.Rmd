@@ -121,6 +121,35 @@ The datasets originate from governmental administrations and official statistics
 we removed bosnia, turkey, and albania because some data was missing from them.
 
 
+variables <- data.frame(
+  Variable = c(
+    "TIME",
+    "year",
+    "hicp",
+    "wage_growth",
+    "Var",
+    "geometry"
+  ),
+  Type = c(
+    "character",
+    "integer",
+    "numeric",
+    "numeric",
+    "numeric",
+    "spatial"
+  ),
+  Meaning = c(
+    "European country",
+    "Year of observation",
+    "Harmonised Index of Consumer Prices",
+    "Annual minimum wage growth",
+    "Percentage change in HICP between 2015 and 2025",
+    "Country geographic boundaries"
+  )
+)
+
+knitr::kable(variables)
+
 
 # Part 3 - Quantifying
 
