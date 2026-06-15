@@ -206,6 +206,32 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 
 wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 
+# analysis
+
+hicp_long <- rent %>%
+  pivot_longer(
+    cols = matches("^20"),
+    names_to = "year",
+    values_to = "hicp"
+  ) %>%
+  mutate(year = as.numeric(year))
+
+wage_long <- wage %>%
+  pivot_longer(
+    cols = matches("^20"),
+    names_to = "year",
+    values_to = "wage_growth"
+  ) %>%
+ mutate(
+  year = as.numeric(str_extract(year, "\\d{4}")),
+  wage_growth = as.numeric(wage_growth)
+)
+
+analysis <- left_join(
+  hicp_long,
+  wage_long,
+  by = c("TIME", "year")
+)
 
 ```
 
@@ -221,23 +247,13 @@ rent <- rent %>%
     Var = ((`2025` - `2015`) / `2015`) * 100 )
 
 
-new_variables <- data.frame(
-  Variable = c(
-    "Var",
-    "wage_growth"
-  ),
-  Type = c(
-    "numeric",
-    "numeric"
-  ),
-  Meaning = c(
-    "Percentage change in HICP between 2015 and 2025, representing the increase in living costs",
-    "Annual growth of statutory minimum wages across European countries"
-
+country_variation <- analysis %>%
+  group_by(TIME) %>%
+  summarise(
+    avg_wage_growth = mean(wage_growth, na.rm = TRUE)
   )
-)
 
-knitr::kable(new_variables)
+knitr::kable(country_variation)
 
 ```
 
