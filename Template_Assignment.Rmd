@@ -126,15 +126,11 @@ variables <- data.frame(
     "TIME",
     "year",
     "hicp",
-    "wage_growth",
-    "Var",
     "geometry"
   ),
   Type = c(
     "character",
     "integer",
-    "numeric",
-    "numeric",
     "numeric",
     "spatial"
   ),
@@ -142,8 +138,6 @@ variables <- data.frame(
     "European country",
     "Year of observation",
     "Harmonised Index of Consumer Prices",
-    "Annual minimum wage growth",
-    "Percentage change in HICP between 2015 and 2025",
     "Country geographic boundaries"
   )
 )
@@ -224,53 +218,26 @@ wage<-wage[,-seq(from=3, to=ncol(wage), by=2)]
 # Create percentage change in HICP between 2015 and 2025
 rent <- rent %>%
   mutate(
-    Var = ((`2025` - `2015`) / `2015`) * 100
+    Var = ((`2025` - `2015`) / `2015`) * 100 )
+
+
+new_variables <- data.frame(
+  Variable = c(
+    "Var",
+    "wage_growth"
+  ),
+  Type = c(
+    "numeric",
+    "numeric"
+  ),
+  Meaning = c(
+    "Percentage change in HICP between 2015 and 2025, representing the increase in living costs",
+    "Annual growth of statutory minimum wages across European countries"
+
   )
-
-# Create long format HICP variable
-hicp_long <- rent %>%
-  pivot_longer(
-    cols = matches("^20"),
-    names_to = "year",
-    values_to = "hicp"
-  ) %>%
-  mutate(
-    year = as.numeric(year)
-  )
-
-
-# Create long format minimum wage growth variable
-wage_long <- wage %>%
-  pivot_longer(
-    cols = matches("^20"),
-    names_to = "year",
-    values_to = "wage_growth"
-  ) %>%
-  mutate(
-    year = as.numeric(str_extract(year, "\\d{4}")),
-    wage_growth = as.numeric(wage_growth)
-  )
-
-
-# Merge HICP and wage variables into one dataset
-analysis <- left_join(
-  hicp_long,
-  wage_long,
-  by = c("TIME", "year")
 )
 
-
-# Create minimum wage status variable
-wage_countries <- unique(wage_long$TIME)
-
-subpop <- rent %>%
-  mutate(
-    min_wage_status = ifelse(
-      TIME %in% wage_countries,
-      "Has minimum wage",
-      "No minimum wage"
-    )
-  )
+knitr::kable(new_variables)
 
 ```
 
