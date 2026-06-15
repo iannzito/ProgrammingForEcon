@@ -194,7 +194,7 @@ Please use a separate 'R block' of code for each type of cleaning. So, e.g. one 
 
 ## 3.2 Generate necessary variables
 
-Variable 1
+HICP Inflation:
 
 ```{r gen_var1, include=FALSE}
 
@@ -203,7 +203,7 @@ data<-left_join(europe, rent, join_by("NAME_ENGL"=="TIME"))
 
 ```
 
-Variable 2
+Wage Growth:
 
 ```{r gen_var2, include=FALSE}
 
