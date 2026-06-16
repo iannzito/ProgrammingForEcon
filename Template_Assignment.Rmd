@@ -485,6 +485,8 @@ Provide the link to your PUBLIC repository here: ...
 #===============================================================================================================================================================================================
 ## 5.2 Reference list
 
-International Labour Organization. (2022). Global Wage Report 2022–23: The impact of inflation and COVID-19 on wages and purchasing power. ILO. https://www.ilo.org/publications/flagship-reports/global-wage-report-2022-23-impact-inflation-and-covid-19-wages-and
+International Labour Organization. (2022). Global Wage Report 2022–23: The impact of inflation and COVID-19 on wages and purchasing power. https://www.ilo.org/publications/flagship-reports/global-wage-report-2022-23-impact-inflation-and-covid-19-wages-and
+
+European Parliament and Council of the European Union. (2022). Directive (EU) 2022/2041 of 19 October 2022 on adequate minimum wages in the European Union. Official Journal of the European Union. https://eur-lex.europa.eu/eli/dir/2022/2041/oj/eng
 
 Use APA referencing throughout your document.
