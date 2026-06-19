@@ -473,7 +473,17 @@ Here you provide a description of why the plot above is relevant to your specifi
 #===============================================================================================================================================================================================
 # Part 4 - Discussion
 
-## 4.1 Discuss your findings
+## 4.1 Discuss your findings 
+The objective of this research was to determine if there was a disparity between the growth of minimum wage and the increases in the cost of living, measured in terms of the European average for all Member States. The analysis found that European averages for minimum wage growth were either at or above European average consumer price growth rates from 2020 through 2025. This is consistent with more recent European policy goals to provide minimum wages that allow for adequate living standards, while also supporting vulnerable or low-income workers to afford necessities in an environment of rising living costs. The Jacques Delors Centre indicates that providing fair and adequate minimum wages is key to long-term provision of living standards and decreasing in-work poverty, especially during times of rapid inflation (Andor, 2022). Likewise, Eurofound reports that increases in the statutory minimum wage provide increased earnings for low-income workers and help offset some of the effects of rising prices.
+In addition, although findings from the study indicated countries with higher than average minimum wage growth and countries with higher than average consumer price growth, the study also highlighted the significant geographic variability between countries within the region. The spatial analysis of the countries suggested that inflation occurred at significantly elevated levels in many of the Eastern European countries when compared to many of the Western European countries. The results from this analysis provide evidence to support studies that have reported inflation in Central and Eastern Europe remains significantly higher than the European average due to geographic differences in energy use, economic makeup, and market conditions. Consequently, workers in different countries faced very different cost-of-living pressures even when average European trends appeared favourable.
+
+The analysis of the data indicates that there were higher minimum wage increases due to the inflation shock that arose following the start of the Russia-Ukraine war in February 2022. Past studies show that the war led to a drastic increase in food and energy prices across Europe, causing inflationary pressures on households. Many governments raised their minimum wages as an adjustment to offset these higher prices. However, the results of this study do not show that the war actually caused the increase in wages or that the increase in minimum wage compensated for inflation completely. Instead, what this data shows is that the two events occurred during the same time frame, and they seem to be associated with one another.
+
+Additionally, these findings also indicate that there needs to be a focus on total purchasing power when looking at minimum wage growth. Many countries raised their minimum wages; however, the effects of inflation will impact households differently based on their spending habits. According to research done by De Nederlandsche Bank, low-income households tend to use a greater percentage of their income on necessary items, like food and energy. Therefore, they bear a larger burden of inflation than higher-income families. ABN AMRO also notes that even though average household financial situations have improved, many families still deal with tremendous cost-of-living increases. Therefore, just because a country raises its minimum wage does not mean that all workers experience an improvement in their real standard of living.
+
+It is important to be aware of a few limitations. To begin with, the analysis only looks at the national average for countries, so it will not account for potential differences between areas (i.e., urban vs rural). Housing prices and consumer price indices can differ greatly from one area to another, so this means that the experience of a minimum wage earner will be different than the average experience in the country. Secondly, the minimum wage data collected was only for countries that have minimum wage laws; therefore, countries such as Denmark, Sweden, and Finland cannot be compared as easily due to their having a system based on collective bargaining. As thirdly stated, HICP is a composite index of consumer prices and may not adequately reflect the actual consumption pattern of the low-income population, which is the group most impacted by the minimum wage law. Therefore, this study found associations between increases in inflation and increases in the minimum wage, but it does not provide the ability to measure a cause-and-effect relationship. In addition, factors such as improved productivity, labour market conditions, government intervention, and external economic issues often influence wage growth and inflation.
+
+The data indicate that minimum wages in Europe have increased as living costs rise, helping to safeguard low-income employees from the impact of inflation. However, there is a regional disparity in this protection, and wage increases often do not keep pace with price increases. Future research may focus on specific countries or utilise individual-level household data sets to analyse how wage changes and inflation affect the living standards of different demographic groups.
 
 # Part 5 - Reproducibility
 
@@ -487,4 +497,21 @@ International Labour Organization. (2022). Global Wage Report 2022–23: The imp
 
 European Parliament and Council of the European Union. (2022). Directive (EU) 2022/2041 of 19 October 2022 on adequate minimum wages in the European Union. Official Journal of the European Union. https://eur-lex.europa.eu/eli/dir/2022/2041/oj/eng
 
+Cobain, D. (2026, June 5). Minimum Wage in Europe 2026: 27 EU Country Guide. Employsome. https://employsome.com/blog/minimum-wage-europe/
+
+Cova, J. (n.d.). The EU directive on fair and adequate minimum wages: Low-pay work, collective bargaining and the prospects for income growth. Jacques Delors Centre. https://www.delorscentre.eu/en/publications/fair-and-adequate-minimum-wages
+
+De Nederlandsche Bank. (2025, August 25). How inflation affects households differently. www.dnb.nl. https://www.dnb.nl/en/general-news/background-2025/how-inflation-affects-households-differently/
+
+Delbeke, J., Cornillie, J., & Vis, P. (2022, March 24). The impact of the war in Ukraine on Europe’s climate and energy policy. European University Institute. https://www.eui.eu/news-hub?id=the-impact-of-the-war-in-ukraine-on-europes-climate-and-energy-policy
+
+Half of EU countries exclude workers from minimum wage. (2021, June 9). https://www.etuc.org/en/pressrelease/half-eu-countries-exclude-workers-minimum-wage
+
+López-Bazo, E., Ramos, R., Royuela, V., Molina, O., Vacas-Soriano, C., & de Miguel, P. S. (2025). Impact of national minimum wages on collective bargaining and wages for low-paid workers. Europa.eu, 110. Eurofound. https://doi.org/10.2806/2659787
+
+Times, C. E. (2026, February 10). Regional inflation: still standing out above the European line. Central European Times. https://centraleuropeantimes.com/regional-inflation-still-standing-out-above-the-european-line/
+
+van Reeken-van Wee, J., & van de Kerke, J.-P. (2025, October 22). Cost of living improved despite more expensive groceries. ABN AMRO Bank. https://www.abnamro.com/research/en/our-research/transaction-trends-cost-of-living-improved-despite-more-expensive-groceries
+
 Use APA referencing throughout your document.
+
