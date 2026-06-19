@@ -76,7 +76,6 @@ wage<-read_xlsx("tps00155_page_spreadsheet.xlsx")
 
 ```
 
-midwest is an example dataset included in the tidyverse package
 
 ## 2.2 Provide a short summary of the dataset(s)
 
@@ -88,10 +87,6 @@ head(rent)
 head(europe)
 ```
 
-
-``` r
-inline_code = TRUE
-```
 
 
 This study's aim is to assess wages' rise in line with the country's rising living costs across Europe through the use of three datasets.
@@ -383,7 +378,6 @@ The map shows how much consumer-prices rose in each country between 2015-2025 (n
 
 ## 3.5 Visualize sub-population variation
 
-What is the poverty rate by state?
 
 ```{r visualise_subpopulations, echo=FALSE}
 # Step 1: which countries have a minimum wage? (the ones that show up in the wage data)
@@ -488,6 +482,8 @@ Provide the link to your PUBLIC repository here: ...
 #===============================================================================================================================================================================================
 ## 5.2 Reference list
 
-International Labour Organization. (2022). Global Wage Report 2022–23: The impact of inflation and COVID-19 on wages and purchasing power. ILO. https://www.ilo.org/publications/flagship-reports/global-wage-report-2022-23-impact-inflation-and-covid-19-wages-and
+International Labour Organization. (2022). Global Wage Report 2022–23: The impact of inflation and COVID-19 on wages and purchasing power. https://www.ilo.org/publications/flagship-reports/global-wage-report-2022-23-impact-inflation-and-covid-19-wages-and
+
+European Parliament and Council of the European Union. (2022). Directive (EU) 2022/2041 of 19 October 2022 on adequate minimum wages in the European Union. Official Journal of the European Union. https://eur-lex.europa.eu/eli/dir/2022/2041/oj/eng
 
 Use APA referencing throughout your document.
