@@ -334,6 +334,9 @@ geom_point(size = 2, na.rm = TRUE) +
       "Minimum Wage Growth"
     )
   ) +
+  scale_y_continuous(
+  limits = c(95, 130)
+) +
   theme_minimal()
 
 ```
@@ -354,9 +357,9 @@ ggplot(map_data) +
     expand = FALSE
   ) +
   
-  scale_color_gradient(
-  low = "lightblue",
-  high = "darkblue",
+  scale_fill_gradient(
+  low = "yellow",
+  high = "red",
   labels = scales::label_number(suffix = "%")
 ) +
 labs(
