@@ -489,8 +489,9 @@ The data indicate that minimum wages in Europe have increased as living costs ri
 
 ## 5.1 Github repository link
 
-Provide the link to your PUBLIC repository here: ...
-#===============================================================================================================================================================================================
+
+Provide the link to your PUBLIC repository here: https://github.com/iannzito/ProgrammingForEcon
+#=============================================================================================================================================================
 ## 5.2 Reference list
 
 International Labour Organization. (2022). Global Wage Report 2022–23: The impact of inflation and COVID-19 on wages and purchasing power. https://www.ilo.org/publications/flagship-reports/global-wage-report-2022-23-impact-inflation-and-covid-19-wages-and
