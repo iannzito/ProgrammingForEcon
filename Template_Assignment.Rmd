@@ -32,11 +32,11 @@ library(tinytex)
 
 # Title Page
 
-Noel Kona
-Giorgia Tanzi 
-Iann Soffried 
-Julian Trinkl 
-Morris Nouwens 
+Noel Kona,
+Giorgia Tanzi, 
+Iann Soffried, 
+Julian Trinkl, 
+Morris Nouwens and 
 Dania Al Khulaifi 
 
 
